@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pytest cache
+.pytest_cache/
+
+# Playwright downloads
+playwright/.cache/
+test-results/
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+
+# VS Code settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# MacOS
+.DS_Store
+
+# Logs and OS files
+*.log
+Thumbs.db
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+
+# Python egg metadata
+*.egg-info/
+.eggs/
