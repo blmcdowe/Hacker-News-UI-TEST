@@ -1,3 +1,4 @@
+# This is Docker is intended to test and validate docker_test0_test.py file
 # Use official Python slim image
 FROM python:3.11-slim
 
@@ -18,4 +19,5 @@ COPY . .
 RUN playwright install --with-deps
 
 # Default command to run tests
+
 CMD ["pytest", "-s", "automated-ui-sorting-check.py"]
