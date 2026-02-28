@@ -15,6 +15,8 @@ async def launch_page(headless=False):
     await page.goto(BASE_URL)
     return playwright, browser, page
 
+#Test Fixtures (Test Cases)
+# TC01: Verify that the page title contains "Hacker News"
 @pytest.mark.asyncio
 async def test_page_title():
     playwright, browser, page = await launch_page(headless=False)
@@ -24,7 +26,7 @@ async def test_page_title():
     finally:
         await browser.close()
         await playwright.stop()
-
+# TC02: Verify that the "new" link navigates to the newest articles page
 @pytest.mark.asyncio
 async def test_new_tab_navigation():
     playwright, browser, page = await launch_page(headless=False)
@@ -37,6 +39,7 @@ async def test_new_tab_navigation():
         await browser.close()
         await playwright.stop()
 
+# TC03: Verify that the "login" link is clickable
 @pytest.mark.asyncio
 async def test_login_link():
     playwright, browser, page = await launch_page(headless=False)
@@ -48,7 +51,7 @@ async def test_login_link():
     finally:
         await browser.close()
         await playwright.stop()
-
+# TC04: Verify that article ranks are displayed on the homepage
 @pytest.mark.asyncio
 async def test_article_ranks_present():
     playwright, browser, page = await launch_page(headless=False)
@@ -59,7 +62,7 @@ async def test_article_ranks_present():
     finally:
         await browser.close()
         await playwright.stop()
-
+# TC05: Verify that article scores (points) are displayed
 @pytest.mark.asyncio
 async def test_article_scores():
     playwright, browser, page = await launch_page(headless=False)
@@ -71,6 +74,7 @@ async def test_article_scores():
         await browser.close()
         await playwright.stop()
 
+# TC06: Verify that comment links exist for articles
 @pytest.mark.asyncio
 async def test_comment_links():
     playwright, browser, page = await launch_page(headless=False)
@@ -81,7 +85,7 @@ async def test_comment_links():
     finally:
         await browser.close()
         await playwright.stop()
-
+# TC07: Verify that the Hacker News logo is visible on the page
 @pytest.mark.asyncio
 async def test_logo_visible():
     playwright, browser, page = await launch_page(headless=False)
@@ -94,6 +98,7 @@ async def test_logo_visible():
         await browser.close()
         await playwright.stop()
 
+# TC08: Verify that the "past" link navigates correctly to the front page
 @pytest.mark.asyncio
 async def test_past_link_navigation():
     playwright, browser, page = await launch_page(headless=False)
@@ -106,6 +111,7 @@ async def test_past_link_navigation():
         await browser.close()
         await playwright.stop()
 
+#TC09:  Article Sorting Verification (Advanced)
 @pytest.mark.asyncio
 async def test_article_rows():
     playwright, browser, page = await launch_page(headless=False)
