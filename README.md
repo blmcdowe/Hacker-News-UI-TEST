@@ -1,94 +1,131 @@
-# Hacker News UI Test Automation
+# Playwright UI Tests – Hacker News
 
-This project is a UI test suite for [Hacker News](https://news.ycombinator.com/) using Python, Pytest, and Playwright. It validates key functionality and UI elements such as article scores, login links, navigation tabs, and comments.
+![Python](https://img.shields.io/badge/python-3.10+-blue)
+![Pytest](https://img.shields.io/badge/pytest-passing-brightgreen)
+![Docker](https://img.shields.io/badge/docker-ready-blue)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
-# Tech Stack
+## Project Overview
+This project contains a set of automated UI tests for [Hacker News](https://news.ycombinator.com/) built using **Python** and **Playwright**.  
 
-- Python 3.11+
-- Playwright (async API)
-- Pytest
+* Validates key page elements such as article rows, ranks, titles, and comment links.
 
-#  Setup
+* Includes Test 9, which verifies all .athing article rows and can generate visual screenshots for each row.
 
-1. **Clone the repository**
+* Tests can run locally in headed mode for visual verification or in Docker in headless mode for CI/CD environments.
 
-   git clone https://github.com/yourusername/hacker-news-ui-tests.git
-   cd hacker-news-ui-tests
----
+This project demonstrates professional QA practices including:
 
-Install dependencies
+* Async test execution using `pytest-asyncio`
 
-pip install -r requirements.txt
-playwright install
----
-Run tests
+* Headless browser testing for CI/CD integration
 
-python cli.py
+* Screenshot capture for visual validation
 
-#  Test Coverage - Test Number, Name, Description
+* Dockerized test execution for reproducible environments
 
-Test #1. test_page_title	Checks if the page title contains "Hacker News"
+### Features / Tests
+| Test #   | Description |
+|----------|-------------|
+| 1-8<br/> |Validate page title, navigation links, login link, article ranks, scores, comment links, logo visibility, past link navigation             |
+| 9<br/>        |Verify all .athing rows exist, optionally capture screenshots of each article row             |
 
-Test #2. test_new_tab_navigation	Verifies the "new" tab navigates properly
-
-Test #3. test_login_link	Asserts the login link is functional
-
-Test #4. test_article_ranks_present	Validates that article ranks are visible
-
-Test #5. test_article_scores	Confirms article scores are present
-
-Test #6. test_comment_links	Ensures comment links exist
-
-Test #7. test_logo_visible	Checks visibility of the Hacker News logo
-
-Test #8. test_past_link_navigation	Tests that the "past" link works correctly
-
-# Notes
-Test warnings are suppressed using warnings.filterwarnings.
-
-All browser instances are properly closed using try/finally blocks.
-
-# License
-MIT License
-This project is released under the MIT License, which permits unrestricted use, modification, and distribution of the software, provided that the original copyright notice and permission notice are included in all copies or substantial portions of the software. For complete terms, refer to the LICENSE file.
-
----
-
-#  3. Documentation
-A docs/ directory has been added to organize extended documentation. The main file is:
-
-## docs/
-   └── usage.md   # Contains detailed usage instructions and test descriptions
-
-# How to Use Project
-
-## 1. Running Tests via CLI
-
-Run all UI tests:
-
-python cli.py
-
-## 2. Adding a New Test
-Open automated-ui-sorting-check.py.
-
-Add a new @pytest.mark.asyncio function using the Playwright API.
-
-Use try/finally to ensure proper browser shutdown.
-
-## 3. Example Test
-
-@pytest.mark.asyncio
-async def test_example():
-    playwright, browser, page = await launch_page()
-    try:
-        assert await page.title() == "Expected Title"
-    finally:
-        await browser.close()
-        await playwright.stop()
-
----
+*Screenshots for Test 9 are saved in screenshots/ and automatically generated in Docker or local runs.*
 
 
+
+### Requirements
+
+* Python 3.10+
+
+* Playwright
+
+* Pytest
+
+* Pytest-asyncio
+
+Install dependencies: 
+
+`pip install -r requirements.txt`
+
+### Running Tests Locally
+
+1. Navigate to project root:
+`cd C:\Users\bgroo\PycharmProjects\PlaywrightUITests`
+
+
+2. Run all tests with visual browser (headed mode):
+`pytest -s`
+
+
+3. Run only Test 9:
+`pytest -s docker_test9_test.py`
+
+### Dockerized Test Execution
+1. Build Docker Image
+
+`docker build -t playwright-ui-tests .`
+
+2. Run Test 9 in Docker:
+`docker run --rm -e DOCKER=1 -v ${PWD}:/app playwright-ui-tests pytest -s docker_test9_test.py
+`
+* `-e DOCKER=1` → runs browser in headless mode
+
+* `-v ${PWD}:/app `→ mounts project folder so screenshots are saved locally
+
+3. Screenshots will be in:
+
+`screenshots/article_1.png`
+
+`screenshots/article_2.png`
+
+`…`
+
+Should be seen in generated directory with a folder structure as seen below.
+
+````
+screenshots/
+├─ article_1.png
+├─ article_2.png
+├─ article_3.png
+...
+├─ article_30.png
+
+````
+
+### Example Screenshot
+![Article 1 Screenshot](screenshots/article_1.png)
+
+### Project Structure 
+
+````
+PlaywrightUITests/
+├─ docker_test9_test.py       # Test 9 with screenshots
+├─ automated-ui-sorting-check.py  # Main UI test suite (Tests 1–9)
+├─ requirements.txt
+├─ Dockerfile
+├─ screenshots/               # Generated screenshots
+└─ README.md
+`````
+
+
+### Notes / Best Practices
+
+* Async Playwright tests require pytest-asyncio to run properly.
+
+* PyCharm may not detect async tests automatically; running with a pytest run configuration or in Docker ensures full compatibility.
+
+* Screenshots in Test 9 allow visual verification of each article row, useful for QA or regression testing.
+
+* Docker provides reproducible environments for CI/CD or other users cloning this repo.
+
+### Author
+
+Byron McDowell – QA / Automation Portfolio Project
+
+## License
+
+This project is licensed under the [MIT License](LICENSE) – see the LICENSE file for details.
 
 
 
