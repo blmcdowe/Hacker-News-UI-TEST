@@ -3,8 +3,8 @@ import sys
 import os
 
 def main():
-    # Point directly to your test file or folder
-    project_path = "C:/Users/bgroo/PycharmProjects/PlaywrightUITests/automated-ui-sorting-check.py"
+    # Point directly to your test file or folder: you can run all test with this code no matter how many test cases you add to automated-ui-sorting-check.py
+    project_path = "C:/your/path/PycharmProjects/PlaywrightUITests/automated-ui-sorting-check.py"
     print(f"Running tests in: {project_path}\n")
 
     result = subprocess.run(
@@ -21,4 +21,5 @@ def main():
         sys.exit(result.returncode)
 
 if __name__ == "__main__":
+
     main()
