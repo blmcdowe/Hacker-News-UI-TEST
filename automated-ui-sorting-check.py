@@ -15,7 +15,8 @@ async def launch_page(headless=False):
     await page.goto(BASE_URL)
     return playwright, browser, page
 
-#Test Fixtures (Test Cases)
+#Test Fixtures (Test Cases) using Playwright: This file can be ran by CLI.py and can add/subtract Test fixture below.
+
 # TC01: Verify that the page title contains "Hacker News"
 @pytest.mark.asyncio
 async def test_page_title():
@@ -125,3 +126,4 @@ async def test_article_rows():
     finally:
         await browser.close()
         await playwright.stop()
+
