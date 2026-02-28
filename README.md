@@ -51,7 +51,7 @@ Install dependencies:
 ### Running Tests Locally
 
 1. Navigate to project root:
-`cd C:\Users\bgroo\PycharmProjects\PlaywrightUITests`
+`cd C:\Users\Yourusername\PycharmProjects\PlaywrightUITests`
 
 
 2. Run all tests with visual browser (headed mode):
@@ -126,6 +126,7 @@ Byron McDowell – QA / Automation Portfolio Project
 ## License
 
 This project is licensed under the [MIT License](LICENSE) – see the LICENSE file for details.
+
 
 
 
